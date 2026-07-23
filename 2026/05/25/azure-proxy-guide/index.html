@@ -20,16 +20,17 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="本文介绍如何使用 Microsoft Azure 搭建 V2Ray 节点。">
+    <meta name="description" content="本文介绍如何使用 Microsoft Azure 和 3X-UI 搭建翻墙节点。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用 Microsoft Azure 搭建 V2Ray 节点完整指南">
+<meta property="og:title" content="使用 Microsoft Azure 和 3X-UI 搭建节点完整指南">
 <meta property="og:url" content="http://example.com/2026/05/25/azure-proxy-guide/index.html">
 <meta property="og:site_name" content="杆杆的碎碎念">
-<meta property="og:description" content="本文介绍如何使用 Microsoft Azure 搭建 V2Ray 节点。">
+<meta property="og:description" content="本文介绍如何使用 Microsoft Azure 和 3X-UI 搭建翻墙节点。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2026-05-25T15:02:48.000Z">
-<meta property="article:modified_time" content="2026-05-30T02:18:19.000Z">
+<meta property="article:modified_time" content="2026-07-23T08:55:29.926Z">
 <meta property="article:author" content="杆杆只爱学习">
+<meta property="article:tag" content="3X-UI">
 <meta property="article:tag" content="Azure">
 <meta property="article:tag" content="Clash">
 <meta property="article:tag" content="V2Ray">
@@ -40,10 +41,10 @@
 <link rel="canonical" href="http://example.com/2026/05/25/azure-proxy-guide/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2026/05/25/azure-proxy-guide/","path":"2026/05/25/azure-proxy-guide/","title":"使用 Microsoft Azure 搭建 V2Ray 节点完整指南"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2026/05/25/azure-proxy-guide/","path":"2026/05/25/azure-proxy-guide/","title":"使用 Microsoft Azure 和 3X-UI 搭建节点完整指南"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>使用 Microsoft Azure 搭建 V2Ray 节点完整指南 | 杆杆的碎碎念</title>
+<title>使用 Microsoft Azure 和 3X-UI 搭建节点完整指南 | 杆杆的碎碎念</title>
   
 
 
@@ -140,7 +141,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#VPS-%E8%8E%B7%E5%8F%96"><span class="nav-number">1.</span> <span class="nav-text">VPS 获取</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E6%B3%A8%E5%86%8C"><span class="nav-number">1.1.</span> <span class="nav-text">直接注册</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E8%BF%87-GitHub-%E6%B3%A8%E5%86%8C"><span class="nav-number">1.2.</span> <span class="nav-text">通过 GitHub 注册</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="nav-number">2.</span> <span class="nav-text">创建虚拟机</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC"><span class="nav-number">2.1.</span> <span class="nav-text">基本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C"><span class="nav-number">2.2.</span> <span class="nav-text">网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A3%81%E7%9B%98"><span class="nav-number">2.3.</span> <span class="nav-text">磁盘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%91%E8%A7%86"><span class="nav-number">2.4.</span> <span class="nav-text">监视</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-V2Ray"><span class="nav-number">3.</span> <span class="nav-text">安装 V2Ray</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-V2Ray-1"><span class="nav-number">3.1.</span> <span class="nav-text">安装 V2Ray</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">3.2.</span> <span class="nav-text">创建配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%98%B2%E7%81%AB%E5%A2%99%E6%94%BE%E8%A1%8C%E7%AB%AF%E5%8F%A3"><span class="nav-number">3.3.</span> <span class="nav-text">防火墙放行端口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Azure-%E6%94%BE%E8%A1%8C%E7%AB%AF%E5%8F%A3"><span class="nav-number">3.4.</span> <span class="nav-text">Azure 放行端口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E5%90%AF-BBR-%E5%8A%A0%E9%80%9F"><span class="nav-number">3.5.</span> <span class="nav-text">开启 BBR 加速</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="nav-number">4.</span> <span class="nav-text">客户端</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Windows-Linux-macOS-and-Android"><span class="nav-number">4.1.</span> <span class="nav-text">Windows, Linux, macOS and Android</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iOS-and-iPadOS"><span class="nav-number">4.2.</span> <span class="nav-text">iOS and iPadOS</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#VPS-%E8%8E%B7%E5%8F%96"><span class="nav-number">1.</span> <span class="nav-text">VPS 获取</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E6%B3%A8%E5%86%8C"><span class="nav-number">1.1.</span> <span class="nav-text">直接注册</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E8%BF%87-GitHub-%E6%B3%A8%E5%86%8C"><span class="nav-number">1.2.</span> <span class="nav-text">通过 GitHub 注册</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="nav-number">2.</span> <span class="nav-text">创建虚拟机</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC"><span class="nav-number">2.1.</span> <span class="nav-text">基本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C"><span class="nav-number">2.2.</span> <span class="nav-text">网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A3%81%E7%9B%98"><span class="nav-number">2.3.</span> <span class="nav-text">磁盘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%91%E8%A7%86"><span class="nav-number">2.4.</span> <span class="nav-text">监视</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#V2Ray-VMess"><span class="nav-number">3.</span> <span class="nav-text">V2Ray (VMess)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-V2Ray"><span class="nav-number">3.1.</span> <span class="nav-text">安装 V2Ray</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">3.2.</span> <span class="nav-text">创建配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%98%B2%E7%81%AB%E5%A2%99%E6%94%BE%E8%A1%8C%E7%AB%AF%E5%8F%A3"><span class="nav-number">3.3.</span> <span class="nav-text">防火墙放行端口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Azure-%E6%94%BE%E8%A1%8C%E7%AB%AF%E5%8F%A3"><span class="nav-number">3.4.</span> <span class="nav-text">Azure 放行端口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E5%90%AF-BBR-%E5%8A%A0%E9%80%9F"><span class="nav-number">3.5.</span> <span class="nav-text">开启 BBR 加速</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Windows-Linux-macOS-and-Android-%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="nav-number">3.6.</span> <span class="nav-text">Windows, Linux, macOS and Android 客户端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iOS-and-iPadOS-%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="nav-number">3.7.</span> <span class="nav-text">iOS and iPadOS 客户端</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3X-UI-VLESS-Reality"><span class="nav-number">4.</span> <span class="nav-text">3X-UI (VLESS + Reality)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-3X-UI"><span class="nav-number">4.1.</span> <span class="nav-text">安装 3X-UI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%BE%E8%A1%8C-Panel-Port-%E5%92%8C-SSL-Port"><span class="nav-number">4.2.</span> <span class="nav-text">放行 Panel Port 和 SSL Port</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E7%99%BB%E9%99%86"><span class="nav-number">4.3.</span> <span class="nav-text">浏览器登陆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%BE%E8%A1%8C-Sub-Port-%E5%92%8C-%E8%8A%82%E7%82%B9%E7%AB%AF%E5%8F%A3"><span class="nav-number">4.4.</span> <span class="nav-text">放行 Sub Port 和 节点端口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%A5%E7%AB%99%E8%AE%BE%E7%BD%AE"><span class="nav-number">4.5.</span> <span class="nav-text">入站设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AE%BE%E7%BD%AE"><span class="nav-number">4.6.</span> <span class="nav-text">客户端设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%BC%E5%85%A5"><span class="nav-number">4.7.</span> <span class="nav-text">导入</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -164,7 +165,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -204,12 +205,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="使用 Microsoft Azure 搭建 V2Ray 节点完整指南 | 杆杆的碎碎念">
+      <meta itemprop="name" content="使用 Microsoft Azure 和 3X-UI 搭建节点完整指南 | 杆杆的碎碎念">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          使用 Microsoft Azure 搭建 V2Ray 节点完整指南
+          使用 Microsoft Azure 和 3X-UI 搭建节点完整指南
         </h1>
 
         <div class="post-meta-container">
@@ -227,7 +228,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2026-05-30 10:18:19" itemprop="dateModified" datetime="2026-05-30T10:18:19+08:00">2026-05-30</time>
+      <time title="Modified: 2026-07-23 16:55:29" itemprop="dateModified" datetime="2026-07-23T16:55:29+08:00">2026-07-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -248,7 +249,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>本文介绍如何使用 Microsoft Azure 搭建 V2Ray 节点。</p>
+    <div class="post-body" itemprop="articleBody"><p>本文介绍如何使用 Microsoft Azure 和 3X-UI 搭建翻墙节点。</p>
 <span id="more"></span>
 
 <h2 id="VPS-获取"><a href="#VPS-获取" class="headerlink" title="VPS 获取"></a>VPS 获取</h2><h3 id="直接注册"><a href="#直接注册" class="headerlink" title="直接注册"></a>直接注册</h3><p>访问 <a target="_blank" rel="noopener" href="https://azure.microsoft.com/zh-cn/free/students">Azure 官方网站</a>，使用您的学校邮箱注册并完善信息。</p>
@@ -277,32 +278,32 @@
 <h3 id="监视"><a href="#监视" class="headerlink" title="监视"></a>监视</h3><ul>
 <li>诊断：禁用</li>
 </ul>
-<h2 id="安装-V2Ray"><a href="#安装-V2Ray" class="headerlink" title="安装 V2Ray"></a>安装 V2Ray</h2><p>转到 <strong>虚拟机 &gt; Ubuntu &gt; 连接 &gt; 连接 &gt; SSH 命令</strong>，将刚刚下载的 key 的本地路径拷贝至此处，复制 SSH 命令并在 Windows Powershell 中运行。</p>
-<h3 id="安装-V2Ray-1"><a href="#安装-V2Ray-1" class="headerlink" title="安装 V2Ray"></a>安装 V2Ray</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -L https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)</span><br><span class="line"></span><br><span class="line">bash &lt;(curl -L https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-dat-release.sh)</span><br></pre></td></tr></table></figure>
+<h2 id="V2Ray-VMess"><a href="#V2Ray-VMess" class="headerlink" title="V2Ray (VMess)"></a>V2Ray (VMess)</h2><p>转到 <strong>虚拟机 &gt; Ubuntu &gt; 连接 &gt; 连接 &gt; SSH 命令</strong>，将刚刚下载的 key 的本地路径拷贝至此处，复制 SSH 命令并在 Windows Powershell 中运行。</p>
+<h3 id="安装-V2Ray"><a href="#安装-V2Ray" class="headerlink" title="安装 V2Ray"></a>安装 V2Ray</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -L https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)</span><br><span class="line"></span><br><span class="line">bash &lt;(curl -L https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-dat-release.sh)</span><br></pre></td></tr></table></figure>
 
-<h3 id="创建配置文件"><a href="#创建配置文件" class="headerlink" title="创建配置文件"></a>创建配置文件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/etc/v2ray</span><br><span class="line">vi config.json</span><br></pre></td></tr></table></figure>
+<h3 id="创建配置文件"><a href="#创建配置文件" class="headerlink" title="创建配置文件"></a>创建配置文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/local/etc/v2ray</span><br><span class="line">vi config.json</span><br></pre></td></tr></table></figure>
 
 <p>按 <code>i</code> 切换到输入模式，按右键粘贴以下内容：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;log&quot;: &#123;</span><br><span class="line">        &quot;loglevel&quot;: &quot;warning&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;routing&quot;: &#123;</span><br><span class="line">        &quot;domainStrategy&quot;: &quot;AsIs&quot;,</span><br><span class="line">        &quot;rules&quot;: [</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;type&quot;: &quot;field&quot;,</span><br><span class="line">                &quot;ip&quot;: [</span><br><span class="line">                    &quot;geoip:private&quot;</span><br><span class="line">                ],</span><br><span class="line">                &quot;outboundTag&quot;: &quot;block&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;inbounds&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;listen&quot;: &quot;0.0.0.0&quot;,</span><br><span class="line">            &quot;port&quot;: 10000, // 请将此处更换为您的端口号</span><br><span class="line">            &quot;protocol&quot;: &quot;vmess&quot;,</span><br><span class="line">            &quot;settings&quot;: &#123;</span><br><span class="line">                &quot;clients&quot;: [</span><br><span class="line">                    &#123;</span><br><span class="line">                        &quot;id&quot;: &quot;7966c347-b5f5-46a0-b720-xxxxxxxxxxxx&quot; // 请将此处更换为您 的 UUID</span><br><span class="line">                    &#125;</span><br><span class="line">                ]</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;streamSettings&quot;: &#123;</span><br><span class="line">                &quot;network&quot;: &quot;tcp&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    &quot;outbounds&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;protocol&quot;: &quot;freedom&quot;,</span><br><span class="line">            &quot;tag&quot;: &quot;direct&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;protocol&quot;: &quot;blackhole&quot;,</span><br><span class="line">            &quot;tag&quot;: &quot;block&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>其中端口号为 0-65535 的任意值，UUID 可在 <a target="_blank" rel="noopener" href="https://www.uuidgenerator.net/">Online UUID Generator</a> 处生成。</p>
 <p>按 <code>esc</code> 后输入 <code>:wq</code> 保存并退出。</p>
-<h3 id="防火墙放行端口"><a href="#防火墙放行端口" class="headerlink" title="防火墙放行端口"></a>防火墙放行端口</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow 10000 //请将此处更换为您的端口号</span><br></pre></td></tr></table></figure>
+<h3 id="防火墙放行端口"><a href="#防火墙放行端口" class="headerlink" title="防火墙放行端口"></a>防火墙放行端口</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> ufw allow 10000 //请将此处更换为您的端口号</span><br></pre></td></tr></table></figure>
 
 <h3 id="Azure-放行端口"><a href="#Azure-放行端口" class="headerlink" title="Azure 放行端口"></a>Azure 放行端口</h3><p>转到 <strong>虚拟机 &gt; Ubuntu &gt; 网络 &gt; 网络设置 &gt; 入站端口规则</strong>，创建入站端口规则：</p>
 <ul>
 <li>目标端口范围：您的端口号</li>
 <li>协议：TCP</li>
 </ul>
-<h3 id="开启-BBR-加速"><a href="#开启-BBR-加速" class="headerlink" title="开启 BBR 加速"></a>开启 BBR 加速</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &#x27;net.core.default_qdisc=fq&#x27; &gt;&gt; /etc/sysctl.conf &amp;&amp; echo &#x27;net.ipv4.tcp_congestion_control=bbr&#x27; &gt;&gt; /etc/sysctl.conf &amp;&amp; sysctl -p</span><br></pre></td></tr></table></figure>
+<h3 id="开启-BBR-加速"><a href="#开启-BBR-加速" class="headerlink" title="开启 BBR 加速"></a>开启 BBR 加速</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;net.core.default_qdisc=fq&#x27;</span> &gt;&gt; /etc/sysctl.conf &amp;&amp; <span class="built_in">echo</span> <span class="string">&#x27;net.ipv4.tcp_congestion_control=bbr&#x27;</span> &gt;&gt; /etc/sysctl.conf &amp;&amp; sysctl -p</span><br></pre></td></tr></table></figure>
 
-<h2 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h2><h3 id="Windows-Linux-macOS-and-Android"><a href="#Windows-Linux-macOS-and-Android" class="headerlink" title="Windows, Linux, macOS and Android"></a>Windows, Linux, macOS and Android</h3><ul>
+<h3 id="Windows-Linux-macOS-and-Android-客户端"><a href="#Windows-Linux-macOS-and-Android-客户端" class="headerlink" title="Windows, Linux, macOS and Android 客户端"></a>Windows, Linux, macOS and Android 客户端</h3><ul>
 <li>Windows, Linux and macOS: 请使用 <a target="_blank" rel="noopener" href="https://github.com/clash-verge-rev/clash-verge-rev">Clash Verge</a></li>
 <li>Android: 请使用 <a target="_blank" rel="noopener" href="https://github.com/MetaCubeX/ClashMetaForAndroid">Clash Meta</a></li>
 </ul>
 <p>创建名为 config.json 的文件，内容如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">port: 7890</span><br><span class="line">socks-port: 7891</span><br><span class="line">mixed-port: 7890</span><br><span class="line">mode: Rule</span><br><span class="line">log-level: info</span><br><span class="line">external-controller: 127.0.0.1:9090</span><br><span class="line"></span><br><span class="line">dns:</span><br><span class="line">  enable: true</span><br><span class="line">  ipv6: false</span><br><span class="line">  listen: 0.0.0.0:53</span><br><span class="line">  enhanced-mode: fake-ip</span><br><span class="line">  fake-ip-range: 198.18.0.1/16</span><br><span class="line">  nameserver:</span><br><span class="line">    - 223.5.5.5</span><br><span class="line">    - 119.29.29.29</span><br><span class="line">  fallback:</span><br><span class="line">    - 8.8.8.8</span><br><span class="line">    - 1.1.1.1</span><br><span class="line">    - https://dns.google/dns-query </span><br><span class="line"></span><br><span class="line">proxies:</span><br><span class="line">  - name: &quot;V2Ray_server&quot;</span><br><span class="line">    type: vmess</span><br><span class="line">    server: &quot;1.1.1.1&quot; #请将此处更换为您的公网 IP 地址      </span><br><span class="line">    port: 10000 #请将此处更换为您的端口号            </span><br><span class="line">    uuid: &quot;7966c347-b5f5-46a0-b720-xxxxxxxxxxxx&quot; #请将此处更换为您的 UUID</span><br><span class="line">    alterId: 0</span><br><span class="line">    cipher: auto</span><br><span class="line">    network: tcp</span><br><span class="line">    tls: false</span><br><span class="line">    udp: true</span><br><span class="line"></span><br><span class="line">proxy-groups:</span><br><span class="line">  - name: PROXY</span><br><span class="line">    type: select</span><br><span class="line">    proxies:</span><br><span class="line">      - &quot;V2Ray_server&quot;</span><br><span class="line"></span><br><span class="line">rules:</span><br><span class="line">  - DOMAIN-SUFFIX,local,DIRECT</span><br><span class="line">  - IP-CIDR,127.0.0.0/8,DIRECT</span><br><span class="line">  - IP-CIDR,192.168.0.0/16,DIRECT</span><br><span class="line">  - IP-CIDR,10.0.0.0/8,DIRECT</span><br><span class="line"></span><br><span class="line">  - DOMAIN-SUFFIX,google.com,PROXY</span><br><span class="line">  - DOMAIN-SUFFIX,bing.com,PROXY</span><br><span class="line"></span><br><span class="line">  - DOMAIN-SUFFIX,x.com,PROXY</span><br><span class="line">  - DOMAIN-SUFFIX,twitter.com,PROXY</span><br><span class="line">  - DOMAIN-SUFFIX,facebook.com,PROXY</span><br><span class="line">  - DOMAIN-SUFFIX,instagram.com,PROXY</span><br><span class="line">  - DOMAIN-SUFFIX,reddit.com,PROXY</span><br><span class="line"></span><br><span class="line">  - DOMAIN-SUFFIX,pixiv.net,PROXY</span><br><span class="line">  - DOMAIN-SUFFIX,youtube.com,PROXY</span><br><span class="line">  - DOMAIN-SUFFIX,netflix.com,PROXY</span><br><span class="line">  - DOMAIN-SUFFIX,disneyplus.com,PROXY</span><br><span class="line">  - DOMAIN-SUFFIX,spotify.com,PROXY</span><br><span class="line"></span><br><span class="line">  - DOMAIN-SUFFIX,github.com,PROXY</span><br><span class="line">  - DOMAIN-SUFFIX,gitlab.com,PROXY</span><br><span class="line">  - DOMAIN-SUFFIX,stackoverflow.com,PROXY</span><br><span class="line">  - DOMAIN-SUFFIX,openai.com,PROXY</span><br><span class="line"></span><br><span class="line">  - DOMAIN-SUFFIX,wikipedia.org,PROXY</span><br><span class="line">  - DOMAIN-SUFFIX,telegram.org,PROXY</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  - GEOIP,CN,DIRECT</span><br><span class="line">  - MATCH,PROXY</span><br></pre></td></tr></table></figure>
 
-<h3 id="iOS-and-iPadOS"><a href="#iOS-and-iPadOS" class="headerlink" title="iOS and iPadOS"></a>iOS and iPadOS</h3><ul>
+<h3 id="iOS-and-iPadOS-客户端"><a href="#iOS-and-iPadOS-客户端" class="headerlink" title="iOS and iPadOS 客户端"></a>iOS and iPadOS 客户端</h3><ul>
 <li>iOS and iPadOS: 请使用 <a target="_blank" rel="noopener" href="https://apps.apple.com/tr/app/shadowrocket/id932747118">Shadowrocket</a></li>
 </ul>
 <p>设置如下：</p>
@@ -316,6 +317,48 @@
 <li>TCP 快速打开：关闭</li>
 <li>UDP 转发：开启</li>
 </ul>
+<h2 id="3X-UI-VLESS-Reality"><a href="#3X-UI-VLESS-Reality" class="headerlink" title="3X-UI (VLESS + Reality)"></a>3X-UI (VLESS + Reality)</h2><p>转到 <strong>虚拟机 &gt; Ubuntu &gt; 连接 &gt; 连接 &gt; SSH 命令</strong>，将刚刚下载的 key 的本地路径拷贝至此处，复制 SSH 命令并在 Windows Powershell 中运行。</p>
+<h3 id="安装-3X-UI"><a href="#安装-3X-UI" class="headerlink" title="安装 3X-UI"></a>安装 3X-UI</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)</span><br></pre></td></tr></table></figure>
+
+<p>执行中会询问以下内容：</p>
+<ul>
+<li>Database Selection: <strong>SQLite</strong></li>
+<li>Would you like to customize the <strong>Panel Port</strong> settings?<blockquote>
+<p>输入 <strong>n</strong> 后并记录此端口号</p>
+</blockquote>
+</li>
+<li>SSL Certificate Setup<ul>
+<li>如果您有解析到此服务器 IP 的域名请使用：<strong>Let’s Encrypt for Domain</strong></li>
+<li>如果您没有解析到此服务器 IP 的域名请使用：<strong>Let’s Encrypt for IP Address</strong></li>
+</ul>
+</li>
+</ul>
+<p>安装完成后会显示以下内容，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Username:   LujMzz0Nt4</span><br><span class="line">Password:   AaxCJZ7hNW</span><br><span class="line">Port:       13002</span><br><span class="line">WebBasePath: YT3Tmpn861ZodxGlcO</span><br><span class="line">Database:   SQLite (/etc/x-ui/x-ui.db)</span><br><span class="line">Access URL: https://66.154.108.28:13002/YT3Tmpn861ZodxGlcO</span><br><span class="line">API Token:  d86gTe2ix18hnUYATzzZRaprX5iCrYLfudER3IkZFWEqWqav</span><br></pre></td></tr></table></figure>
+<h3 id="放行-Panel-Port-和-SSL-Port"><a href="#放行-Panel-Port-和-SSL-Port" class="headerlink" title="放行 Panel Port 和 SSL Port"></a>放行 Panel Port 和 SSL Port</h3><p>在终端中执行，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow 13002 #请自行替换端口号</span><br><span class="line">sudo ufw allow 80 #请不要替换此端口！</span><br></pre></td></tr></table></figure>
+
+<p>转到 <strong>虚拟机 &gt; Ubuntu &gt; 网络 &gt; 网络设置 &gt; 创建端口规则</strong>，选择入站端口规则，输入 13002,80 后确认。</p>
+<h3 id="浏览器登陆"><a href="#浏览器登陆" class="headerlink" title="浏览器登陆"></a>浏览器登陆</h3><p>在浏览器中输入刚才的 Access URL 并用 Username 和 Password 登陆。</p>
+<h3 id="放行-Sub-Port-和-节点端口"><a href="#放行-Sub-Port-和-节点端口" class="headerlink" title="放行 Sub Port 和 节点端口"></a>放行 Sub Port 和 节点端口</h3><p>转到 <strong>面板设置 &gt; 订阅设置</strong>，在此处查看您的 Sub Port。</p>
+<p>在终端中执行，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow 2096 #请自行替换 Sub Port</span><br><span class="line">sudo ufw allow 1000 #请自行替换 节点端口</span><br></pre></td></tr></table></figure>
+
+<p>其中节点端口为 0-65535 的任意值</p>
+<p>转到 <strong>虚拟机 &gt; Ubuntu &gt; 网络 &gt; 网络设置 &gt; 创建端口规则</strong>，选择入站端口规则，输入 2096 后确认。再创建入站端口 1000 的规则并确认。</p>
+<h3 id="入站设置"><a href="#入站设置" class="headerlink" title="入站设置"></a>入站设置</h3><ul>
+<li>基础配置：<ul>
+<li>协议：vless</li>
+<li>端口：填写刚才的节点端口</li>
+</ul>
+</li>
+<li>协议：X25519 认证</li>
+<li>安全：Reality</li>
+</ul>
+<h3 id="客户端设置"><a href="#客户端设置" class="headerlink" title="客户端设置"></a>客户端设置</h3><ul>
+<li>关联入站：选择刚刚创建的入站</li>
+</ul>
+<h3 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h3><p>在客户端左侧的客户端信息中找到订阅连接并导入 App 即可。</p>
 
     </div>
 
@@ -329,6 +372,7 @@
               <a href="/tags/VPS/" rel="tag"><i class="fa fa-tag"></i> VPS</a>
               <a href="/tags/V2Ray/" rel="tag"><i class="fa fa-tag"></i> V2Ray</a>
               <a href="/tags/Clash/" rel="tag"><i class="fa fa-tag"></i> Clash</a>
+              <a href="/tags/3X-UI/" rel="tag"><i class="fa fa-tag"></i> 3X-UI</a>
           </div>
 
         
